@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding:0;
+}
+/* body and global styles */
+body{
+    font-family: Georgia, Times, 'Times New Roman', serif;
+}
+
+/* header styles */
+h1.header{
+    justify-content: center !important;
+    text-decoration: underline;
+    margin-top:5%;
+}
+
+/* containers and form styles */
+
+h6{
+    justify-content: center !important;
+}
+
+div.container div.row{
+    padding-top:10%;
+    justify-content: center !important;
+}
+
+input[type="email"], input[type="password"]{
+    border: 0;
+    border-bottom: 1px solid grey;
+    outline:0;
+    text-align: center;
+    background: transparent;
+}
+
+button#signup{
+    text-align: center;
+    margin-top:4%;
+    border-radius: 5px;
+    border:0;
+    background-color: rgb(206, 228, 247);
+}
+button#signup:hover{
+    background-color: rgb(162, 207, 247);
+   box-shadow: 5px 2px 5px silver;
+}
