@@ -52,12 +52,11 @@ class ItemManager(models.Manager):
 
         if len(postData["title"]) < 1:
             errors["title_length"] = "Title must be at least 1 character long"
-        if len(postData["description"]) < 1:
-            errors["desc_length"] = "Description cannot be empty"
 
 class Item(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField()
+    description = models.TextField(blank=True)
+    is_complete = models.BooleanField(default=False)
     user = models.ForeignKey(User, related_name="items", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
