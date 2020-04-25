@@ -1,7 +1,10 @@
-from django.shortcuts import render, HttpResponse, render
+from django.shortcuts import render, HttpResponse, redirect
 
 def index(request):
     return render(request, "list_app/index.html")
 
-def first(request):
-    return HttpResponse("First page here")
+def home(request):
+    return render(request, "list_app/home.html")
+
+def signup(request):
+    pass
