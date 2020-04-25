@@ -11,7 +11,12 @@ body{
 h1.header{
     justify-content: center !important;
     text-decoration: underline;
-    margin-top:5%;
+}
+h6 a#header_logout{
+    color:rgb(1, 41, 1);
+    font-size: 12px !important;
+    text-decoration: none;
+    margin-left:95%;
 }
 
 /* containers and form styles */
@@ -25,7 +30,7 @@ div.container div.row{
     justify-content: center !important;
 }
 
-input[type="email"], input[type="password"]{
+input[type="email"], input[type="password"], input[type="text"]{
     border: 0;
     border-bottom: 1px solid grey;
     outline:0;
@@ -33,16 +38,20 @@ input[type="email"], input[type="password"]{
     background: transparent;
 }
 
-button#signup{
+button.signup{
     text-align: center;
     margin-top:4%;
     border-radius: 5px;
     border:0;
     background-color: rgb(206, 228, 247);
 }
-button#signup:hover{
+button.signup:hover{
     background-color: rgb(162, 207, 247);
    box-shadow: 5px 2px 5px silver;
+}
+
+div#login_div{
+    margin-bottom: 3%;
 }
 
 /* This is a test change to check my repo */

@@ -15,7 +15,7 @@ class UserManager(models.Manager):
             errors["err_l_name"] = "Last name must be at least 2 characters long"
         if not REGEX_EMAIL.match(postData["email"]):
             errors["err_email"] = "Email must be in the correct format"
-        matching_users = User.objects.filter(email=postData["email"])
+        matching_users = User.objects.filter(email=postData["email"].lower())
         if len(matching_users) > 0:
             errors["email_taken"] = "Email taken"
         if len(postData["password"]) < 6:
@@ -26,13 +26,13 @@ class UserManager(models.Manager):
     
     def login_validator(self, postData):
         errors = {}
-        matching_user = User.objects.filter(email=postData["email"])
+        matching_user = User.objects.filter(email=postData["login_email"].lower())
 
         if len(matching_user) < 1:
             errors["email_login_matcher"] = "Email does not exist"
         if len(matching_user) > 0:
             user = matching_user[0]
-            if not bcrypt.checkpw(postData["password"].encode(), user.password.encode()):
+            if not bcrypt.checkpw(postData["login_password"].encode(), user.password.encode()):
                 errors["password_error"] = "Information incorrect"
         return errors
 

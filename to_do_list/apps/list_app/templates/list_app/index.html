@@ -18,16 +18,51 @@
                 {% csrf_token %}
                 <h6 class="row align-items-center">New User?</h6><br/>
                 <div class="row align-items-center">
-                    <input type="email" name="e-signup" id="email-signup" placeholder="Email" class="col"/>
+                    <input type="text" name="first_name" id="f_name" placeholder="First Name" class="col"/>
                 </div>
                 <div class="row align-items-center">
-                    <input type="password" name="p-word" id="pass_word" placeholder="Password" class="col"/>
+                    <input type="text" name="last_name" id="l_name" placeholder="Last Name" class="col"/>
                 </div>
                 <div class="row align-items-center">
-                    <button type="submit" class="col" id="signup">Sign up</button>
+                    <input type="email" name="email" id="email_signup" placeholder="Email" class="col"/>
+                </div>
+                <div class="row align-items-center">
+                    <input type="password" name="password" id="p_word" placeholder="Password" class="col"/>
+                </div>
+                <div class="row align-items-center">
+                    <input type="password" name="password_confirmation" id="p_word_confirm" placeholder="Re-enter Password" class="col"/>
+                </div>
+                <div class="row align-items-center">
+                    <button type="submit" class="col signup">Sign up</button>
                 </div>
             </form>
         </div>
+    </div>
+    <div class="container" id="login_div">
+        <div class="row align-items-center">
+            <form id="login" action="/login" method="post">
+                {% csrf_token %}
+                <h6 class="row align-items-center">Sign In!</h6><br/>
+                <div class="row align-items-center">
+                    <input type="email" name="login_email" id="email_login" placeholder="Email" class="col"/>
+                </div>
+                <div class="row align-items-center">
+                    <input type="password" name="login_password" id="p_word_login" placeholder="Password" class="col"/>
+                </div>
+                <div class="row align-items-center">
+                    <button type="submit" class="col signup">Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li {% if message.tag %} class="{{message.tag}}" {% endif %}>{{message}}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

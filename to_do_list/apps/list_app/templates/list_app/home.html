@@ -10,11 +10,21 @@
 </head>
 <body>
     <header class="container">
-        <h1 class="row align-items-center header">Things To Do</h1>
+        <h6><a href="/logout" id="header_logout">Sign Out</a></h6>
+        <h1 id="header1" class="row align-items-center header">Things To Do </h1>
     </header>
     <div class="container">
-        <p>{{username}}</p>
-        <p>{{password}}</p>
+        <p><b>Welcome</b> {{user.first_name}}, {{user.last_name}}</p>
+    </div>
+
+    <div class="container">
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li {% if message.tag %} class="{{message.tag}}" {% endif %}>{{message}}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

@@ -6,7 +6,13 @@ def index(request):
     return render(request, "list_app/index.html")
 
 def home(request):
-    pass
+    if "user_id" not in request.session:
+        return redirect("/")
+    else:
+        context = {
+            "user" : User.objects.get(id=request.session["user_id"])
+        }
+        return render(request, "list_app/home.html", context)
 
 def register(request):
     errors = User.objects.basic_validator(request.POST)
@@ -18,14 +24,32 @@ def register(request):
     else:
         first_name = request.POST["first_name"]
         last_name = request.POST["last_name"]
-        email = request.POST["email"]
+        email = request.POST["email"].lower()
         password = bcrypt.hashpw(request.POST["password"].encode(), bcrypt.gensalt())
         user = User.objects.create(
             first_name = first_name,
             last_name = last_name,
             email = email,
-            password = password
+            password = password.decode()
         )
         request.session["user_id"] = user.id
         messages.success(request, "Successfully registered!")
-        return redirect("/user")
+        return redirect("/home")
+
+def login(request):
+    errors = User.objects.login_validator(request.POST)
+
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+            return redirect("/")
+    else:
+        user = User.objects.get(email=request.POST["login_email"])
+        request.session["user_id"] = user.id
+        return redirect("/home")
+
+
+def logout(request):
+    if "user_id" in request.session:
+        request.session.clear()
+    return redirect("/")
