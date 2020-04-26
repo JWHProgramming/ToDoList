@@ -9,8 +9,10 @@ def home(request):
     if "user_id" not in request.session:
         return redirect("/")
     else:
+        user = User.objects.get(id=request.session["user_id"])
         context = {
-            "user" : User.objects.get(id=request.session["user_id"])
+            "user" : user,
+            "items" : user.items.all()
         }
         return render(request, "list_app/home.html", context)
 
@@ -44,12 +46,29 @@ def login(request):
             messages.error(request, value)
             return redirect("/")
     else:
-        user = User.objects.get(email=request.POST["login_email"])
+        user = User.objects.get(email=request.POST["login_email"].lower())
         request.session["user_id"] = user.id
         return redirect("/home")
-
 
 def logout(request):
     if "user_id" in request.session:
         request.session.clear()
     return redirect("/")
+
+def add(request):
+    errors = Item.objects.item_validator(request.POST)
+
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+            return redirect("/home")
+    else:
+        title = request.POST["title"]
+        description = request.POST["description"]
+        user = User.objects.get(id=request.session["user_id"])
+        Item.objects.create(
+            title = title,
+            description = description,
+            user = user
+        )
+        return redirect("/home")

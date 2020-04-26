@@ -52,6 +52,7 @@ class ItemManager(models.Manager):
 
         if len(postData["title"]) < 1:
             errors["title_length"] = "Title must be at least 1 character long"
+        return errors
 
 class Item(models.Model):
     title = models.CharField(max_length=255)

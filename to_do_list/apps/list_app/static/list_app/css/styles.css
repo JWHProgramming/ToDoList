@@ -8,18 +8,26 @@ body{
 }
 
 /* header styles */
+span b{
+    color: rgb(53, 125, 189);
+}
 h1.header{
     justify-content: center !important;
     text-decoration: underline;
+    margin-bottom:3%;
 }
-h6 a#header_logout{
-    color:rgb(1, 41, 1);
+
+a#header_logout{
+    color:rgb(53, 125, 189);
     font-size: 12px !important;
     text-decoration: none;
-    margin-left:95%;
 }
 
 /* containers and form styles */
+h4{
+    justify-content: center !important;
+    color:rgb(24, 134, 230);
+}
 
 h6{
     justify-content: center !important;
@@ -30,7 +38,7 @@ div.container div.row{
     justify-content: center !important;
 }
 
-input[type="email"], input[type="password"], input[type="text"]{
+textarea, input[type="email"], input[type="password"], input[type="text"]{
     border: 0;
     border-bottom: 1px solid grey;
     outline:0;
@@ -54,4 +62,12 @@ div#login_div{
     margin-bottom: 3%;
 }
 
-/* This is a test change to check my repo */
+/* error and success messages styles */
+
+li.error{
+    color:red;
+}
+
+li.success{
+    color:green;
+}
