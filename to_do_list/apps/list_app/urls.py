@@ -8,4 +8,5 @@ urlpatterns = [
     path("login", views.login),
     path("logout", views.logout),
     path("add", views.add),
+    path("complete/<int:id>", views.complete_toggle),
 ]

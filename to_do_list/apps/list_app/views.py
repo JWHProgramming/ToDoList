@@ -72,3 +72,11 @@ def add(request):
             user = user
         )
         return redirect("/home")
+
+def complete_toggle(request, id):
+    new_id = int(id)
+    item = Item.objects.get(id=new_id)
+
+    item.is_complete=True
+    item.save()
+    return redirect("/home")
