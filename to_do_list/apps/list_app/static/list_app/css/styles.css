@@ -33,10 +33,6 @@ h6{
     justify-content: center !important;
 }
 
-div.container div.row{
-    padding-top:10%;
-    justify-content: center !important;
-}
 
 textarea, input[type="email"], input[type="password"], input[type="text"]{
     border: 0;
@@ -44,6 +40,12 @@ textarea, input[type="email"], input[type="password"], input[type="text"]{
     outline:0;
     text-align: center;
     background: transparent;
+}
+
+input[type="checkbox"]:hover{
+    box-shadow: 0 0 4px 1px rgb(24, 134, 230);
+    transition: all 200ms ease-out;
+    border-radius:3px;
 }
 
 button.signup{
@@ -58,10 +60,30 @@ button.signup:hover{
    box-shadow: 5px 2px 5px silver;
 }
 
-div#login_div{
+div.container div.row{
+    padding-top:10%;
+    justify-content: center !important;
+}
+
+div#login{
     margin-bottom: 3%;
 }
 
+div.table_div{
+    margin-top:7%;
+}
+
+div.new_act_div{
+    margin-bottom:4%;
+}
+
+/* table rearrange */
+a.re_arr{
+    font-size: 12px;
+}
+.arr_separator{
+    font-size:12px;
+}
 /* error and success messages styles */
 
 li.error{

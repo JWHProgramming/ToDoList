@@ -9,4 +9,5 @@ urlpatterns = [
     path("logout", views.logout),
     path("add", views.add),
     path("complete/<int:id>", views.complete_toggle),
+    path("reorder/<int:val>", views.reorder),
 ]

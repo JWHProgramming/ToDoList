@@ -16,7 +16,8 @@
         </div>
             <h1 id="header1" class="row align-items-center header">Things To Do </h1>
     </header>
-    <div class="container">
+    <div class="container table_div">
+        <div><a href="/reorder/1" class="re_arr">Newest First</a> <span class="arr_separator">|</span> <a href="/reorder/2" class="re_arr">Oldest First</a> <span class="arr_separator">|</span> <a href="/reorder/3" class="re_arr">Alphabetical First</a></div>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -43,7 +44,7 @@
             </tbody>
         </table>
     </div>
-    <div class="container">
+    <div class="container new_act_div">
         <div class="row">
             <form id="add_item" action="/add" method="post">
                 {% csrf_token %}

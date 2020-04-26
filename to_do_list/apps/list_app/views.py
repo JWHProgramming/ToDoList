@@ -12,7 +12,7 @@ def home(request):
         user = User.objects.get(id=request.session["user_id"])
         context = {
             "user" : user,
-            "items" : user.items.all()
+            "items" : user.items.all().order_by("created_at")
         }
         return render(request, "list_app/home.html", context)
 
@@ -80,3 +80,25 @@ def complete_toggle(request, id):
     item.is_complete=True
     item.save()
     return redirect("/home")
+
+def reorder(request, val):
+        new_val = int(val)
+        user = User.objects.get(id=request.session["user_id"])
+
+        context = {
+            "user" : user
+        }
+
+        if new_val == 1:
+            context["items"] = user.items.all().order_by("-created_at")
+            return render(request, "list_app/home.html", context)
+        elif new_val == 2:
+            context["items"] = user.items.all().order_by("created_at")
+            return render(request, "list_app/home.html", context)
+        elif new_val == 3:
+            context["items"] = user.items.all().order_by("title")
+            return render(request, "list_app/home.html", context)
+        else:
+            context["items"] = user.items.all()
+            return render(request, "list_app/home.html", context)
+    
