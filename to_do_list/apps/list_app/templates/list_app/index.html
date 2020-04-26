@@ -12,11 +12,20 @@
     <header class="container">
         <h1 class="row align-items-center header">Things To Do</h1>
     </header>
-    <div class="container" id="signup_div">
-        <div class="row align-items-center" id="replace_div">
+        {% if messages %}
+        <div class="container">
+            <ul>
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    <div class="container row" id="signup_div">
+        <div class="col align-items-center" id="replace_div">
             <form id="sign-up" action="/register" method="post">
                 {% csrf_token %}
-                <h6 class="row align-items-center">New User? Sign up!</h6><br/>
+                <h6 class="row align-items-center login_banter">New User?</h6><br/>
                 <div class="row align-items-center">
                     <input type="text" name="first_name" id="f_name" placeholder="First Name" class="col"/>
                 </div>
@@ -37,10 +46,10 @@
                 </div>
             </form>
         </div>
-        <div class='row align-items-center' id="login"> 
+        <div class='col align-items-center' id="login"> 
             <form id='login' action='/login' method='post'> 
                 {% csrf_token %}
-                <h6 class='row align-items-center'>Already A Member?</h6><br/>
+                <h6 class='row align-items-center login_banter'>Already A Member?</h6><br/>
                 <div class='row align-items-center'>
                     <input type='email' name='login_email' id='email_login' placeholder='Email' class='col'/>
                 </div>
@@ -53,15 +62,6 @@
             </form>
         </div>
     </div>
-    </div>
-    <div class="container">
-        {% if messages %}
-            <ul>
-            {% for message in messages %}
-                <li {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

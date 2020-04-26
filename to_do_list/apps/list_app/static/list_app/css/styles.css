@@ -21,6 +21,7 @@ a#header_logout{
     color:rgb(53, 125, 189);
     font-size: 12px !important;
     text-decoration: none;
+    margin-left:50%;
 }
 
 /* containers and form styles */
@@ -32,6 +33,14 @@ h4{
 h6{
     justify-content: center !important;
 }
+
+/*** overriding bootstrap css for forms ***/
+
+.col{
+    max-width: 50% !important;
+}
+
+/*** end of override ***/
 
 
 textarea, input[type="email"], input[type="password"], input[type="text"]{
@@ -65,8 +74,16 @@ div.container div.row{
     justify-content: center !important;
 }
 
+div#signup_div{
+    margin: 4% 10%;
+}
+
 div#login{
     margin-bottom: 3%;
+}
+
+h6.login_banter{
+    color: rgb(24, 134, 230);
 }
 
 div.table_div{
@@ -77,6 +94,9 @@ div.new_act_div{
     margin-bottom:4%;
 }
 
+div form#add_item{
+    width: 80%;
+}
 /* table rearrange */
 a.re_arr{
     font-size: 12px;
