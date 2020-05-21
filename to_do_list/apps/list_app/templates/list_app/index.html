@@ -1,72 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    {% load static %}
-    <link rel="stylesheet" href="{% static '/list_app/css/styles.css' %} ">
-    <title>Sign In</title>
-</head>
-<body>
-    <header class="container">
-        <h1 class="row align-items-center header">Things To Do</h1>
-    </header>
-        {% if messages %}
-        <div class="container">
-            <ul>
-            {% for message in messages %}
-                <li {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</li>
-            {% endfor %}
-            </ul>
-        </div>
-        {% endif %}
-    <div class="container row" id="signup_div">
-        <div class="col align-items-center" id="replace_div">
-            <form id="sign-up" action="/register" method="post">
-                {% csrf_token %}
-                <h6 class="row align-items-center login_banter">New User?</h6><br/>
-                <div class="row align-items-center">
-                    <input type="text" name="first_name" id="f_name" placeholder="First Name" class="col"/>
-                </div>
-                <div class="row align-items-center">
-                    <input type="text" name="last_name" id="l_name" placeholder="Last Name" class="col"/>
-                </div>
-                <div class="row align-items-center">
-                    <input type="email" name="email" id="email_signup" placeholder="Email" class="col"/>
-                </div>
-                <div class="row align-items-center">
-                    <input type="password" name="password" id="p_word" placeholder="Password" class="col"/>
-                </div>
-                <div class="row align-items-center">
-                    <input type="password" name="password_confirmation" id="p_word_confirm" placeholder="Re-enter Password" class="col"/>
-                </div>
-                <div class="row align-items-center">
-                    <button type="submit" class="col signup">Sign up</button>
-                </div>
-            </form>
-        </div>
-        <div class='col align-items-center' id="login"> 
-            <form id='login' action='/login' method='post'> 
-                {% csrf_token %}
-                <h6 class='row align-items-center login_banter'>Already A Member?</h6><br/>
-                <div class='row align-items-center'>
-                    <input type='email' name='login_email' id='email_login' placeholder='Email' class='col'/>
-                </div>
-                <div class='row align-items-center'>
-                    <input type='password' name='login_password' id='p_word_login' placeholder='Password' class='col'/>
-                </div>
-                <div class='row align-items-center'>
-                    <button type='submit' class='col signup'>Sign In</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    </div>
+{% extends "./base.html" %}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="{% static 'list_app/js/2gScript.js' %}"></script>
-</body>
-</html>
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+
+<header class="container">
+    <h1 class="row align-items-center header">Things To Do</h1>
+</header>
+    {% if messages %}
+    <div class="container">
+        <ul>
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+<div class="container row" id="signup_div">
+    <div class="col align-items-center" id="replace_div">
+        <form id="sign-up" action="/register" method="post">
+            {% csrf_token %}
+            <h6 class="row align-items-center login_banter">New User?</h6><br/>
+            <div class="row align-items-center">
+                <input type="text" name="first_name" id="f_name" placeholder="First Name" class="col"/>
+            </div>
+            <div class="row align-items-center">
+                <input type="text" name="last_name" id="l_name" placeholder="Last Name" class="col"/>
+            </div>
+            <div class="row align-items-center">
+                <input type="email" name="email" id="email_signup" placeholder="Email" class="col"/>
+            </div>
+            <div class="row align-items-center">
+                <input type="password" name="password" id="p_word" placeholder="Password" class="col"/>
+            </div>
+            <div class="row align-items-center">
+                <input type="password" name="password_confirmation" id="p_word_confirm" placeholder="Re-enter Password" class="col"/>
+            </div>
+            <div class="row align-items-center">
+                <button type="submit" class="col signup">Sign up</button>
+            </div>
+        </form>
+    </div>
+    <div class='col align-items-center' id="login"> 
+        <form id='login' action='/login' method='post'> 
+            {% csrf_token %}
+            <h6 class='row align-items-center login_banter'>Already A Member?</h6><br/>
+            <div class='row align-items-center'>
+                <input type='email' name='login_email' id='email_login' placeholder='Email' class='col'/>
+            </div>
+            <div class='row align-items-center'>
+                <input type='password' name='login_password' id='p_word_login' placeholder='Password' class='col'/>
+            </div>
+            <div class='row align-items-center'>
+                <button type='submit' class='col signup'>Sign In</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock body %}
