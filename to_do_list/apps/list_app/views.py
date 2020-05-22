@@ -82,6 +82,7 @@ def complete_toggle(request, id):
     return redirect("/home")
 
 def reorder(request, val):
+    if "user_id" in request.session:
         new_val = int(val)
         user = User.objects.get(id=request.session["user_id"])
 
@@ -101,4 +102,6 @@ def reorder(request, val):
         else:
             context["items"] = user.items.all()
             return render(request, "list_app/home.html", context)
+    else:
+        return redirect("/")
     
