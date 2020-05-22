@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 {% for item in items %}
-                    {% if item.is_complete != True %}
+                    
             <tr>
                 <th scope="row">
                     <form action= "/complete/{{item.id}}" id="item_{{item.id}}_form" method="POST">
@@ -32,7 +32,7 @@
                 <td>{{item.title}}</td>
                 <td>{{item.description}}</td>
             </tr>
-                    {% endif %}
+                    
             {% endfor %}
             </tbody>
         </table>

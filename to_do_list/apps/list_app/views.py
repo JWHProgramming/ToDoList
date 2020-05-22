@@ -12,7 +12,7 @@ def home(request):
         user = User.objects.get(id=request.session["user_id"])
         context = {
             "user" : user,
-            "items" : user.items.all().order_by("created_at")
+            "items" : user.items.exclude(is_complete=True)
         }
         return render(request, "list_app/home.html", context)
 
